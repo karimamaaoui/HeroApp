@@ -1,0 +1,27 @@
+<div class="row mt-5">
+
+   @for( hero of heros ;track $index) {
+
+    <div class="col-3">
+      <!-- card p-1: true that's mean always apply this class --> 
+        <div [ngClass]="{'card p-1' : true, 'hight': hero.power >100 , 'medium': hero.power <100 && hero.power >50 , 'low':hero.power<50} ">
+            <div class="card-image">
+              <!--  <img [src]="hero.image" class="w-100 h-100" alt="">-->
+               <img [src]="'http://localhost:4000/getimage/' +hero.image" class="w-100 h-100" alt="">
+            </div>
+            
+            <div class="card-body">
+                <h2>{{hero.name}} </h2>
+                <p> {{hero.power}} </p>
+
+                <button (click)="deleteOne(hero._id)" class="btn btn-danger">Delete</button> 
+                <button [routerLink]="['/edit',hero._id]" class="btn btn-info">Edit</button>
+
+            </div>
+        </div>
+        
+    </div>
+}
+
+  
+</div>

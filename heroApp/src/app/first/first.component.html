@@ -1,0 +1,45 @@
+<div class="container">
+    <h1 class="text-center mt-5 text-dark">Hero App</h1>
+
+    <div class="row mt-5">
+        <div class="col-3">
+            <input type="text" [(ngModel)]="hero.name" class="form-control m-1" placeholder="name">
+        </div>    
+
+        <div class="col-3">
+            <input type="text" [(ngModel)]="hero.power" class="form-control m-1" placeholder="power">
+        </div>    
+        <div class="col-3">
+            <input type="text" [(ngModel)]="hero.image" class="form-control m-1" placeholder="image url">
+        </div>    
+     
+        <div class="col-3">
+            <button (click)="ajouterHero()" class="btn form-control m-1" style="background-color:#16c0c0; color:white">Create Hero</button>
+        </div>    
+    </div>
+
+    <div class="row mt-5">
+
+        @for( hero of heros ;track $index) {
+
+        <div class="col-3">
+            <!--card p-1: true that's mean always apply this class -->
+            <div [ngClass]="{'card p-1' : true, 'hight': hero.power >100 , 'medium': hero.power <100 && hero.power >50 , 'low':hero.power<50} ">
+                <div class="card-image">
+                    <img [src]="hero.image" class="w-100 h-100" alt="">
+                </div>
+                
+                <div class="card-body">
+                    <h2>{{hero.name}} </h2>
+                    <p> {{hero.power}} </p>
+                </div>
+            </div>
+            
+        </div>
+    }
+ 
+      
+    </div>
+
+
+</div>
